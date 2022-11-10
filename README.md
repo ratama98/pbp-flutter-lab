@@ -34,9 +34,11 @@ Dalam kedua modifier, begitu value telah diassign, state tidak akan bisa diubah 
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 1. Tombol + menambahkan angka sebanyak satu satuan.
+
 Menggunakan default app flutter yang sudah memiliki `FloatingActionButton` dengan fungsi `_incrementCounter`.
 
 2. Tombol - mengurangi angka sebanyak satu satuan. Apabila counter bernilai 0, maka tombol - tidak memiliki efek apapun pada counter.
+
 membuat button dan fungsi `_decrementCounter` yang serupa dengan tahap 1, namun dengan logic sebagai berikut untuk mencegah pengurangan ke bawah nilai 0:
 ```dart
   void _decrementCounter() {
@@ -49,6 +51,7 @@ membuat button dan fungsi `_decrementCounter` yang serupa dengan tahap 1, namun 
 ```
 
 3. Apabila counter bernilai ganjil, maka teks indikator berubah menjadi "GANJIL" dengan warna biru. Apabila counter bernilai genap, maka teks indikator berubah menjadi "GENAP" dengan warna merah.
+
 Menambahkan logic pada widget `Text` yang akan berubah sesuai nilai `_counter` sebagai berikut:
 ```dart
  Text(
