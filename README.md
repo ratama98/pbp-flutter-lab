@@ -62,3 +62,65 @@ Menambahkan logic pada widget `Text` yang akan berubah sesuai nilai `_counter` s
   ),      
 ```
 Dengan menggunakan logic `_counter%2==0`, angka 0 sudah otomatis dianggap sebagai bilangan genap.
+
+
+# TUGAS 8
+
+## Jelaskan perbedaan Navigator.push dan Navigator.pushReplacement.
+
+Keduanya berfungsi untuk menambahkan route baru ke stack. Perbedaannya adalah untuk `Navigator.push`
+route baru akan ditambahkan ke stack tanpa menghilangkan route sebelumnya, sehingga dapat dilakukan
+`Navigator.pop` untuk kembali ke route sebelumnya. Di sisi lain, `Navigator.pushReplacement` akan
+menghapus route sebelumnya untuk menambahkan route baru.
+
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+
+(Tidak menyebutkan kembali yang sudah dijelaskan pada readme tugas 7)
+
+* `ListView`
+Menampilkan widget-widget secara linear ke arah scroll. pada tugas ini digunakan `ListView.builder`
+untuk merender elemen-elemen list menjadi widget-widget.
+
+* `Card`:
+Panel dengan ujung-ujung bulat dan elevation shadow (sc: flutter documentation). Pada tugas ini
+akan digunakan untuk menampilkan widget lain, yaitu widget yang dirender oleh `ListView.builder`.
+
+* `Drawer`:
+Digunakan bersamaan dengan `Scaffold` untuk membuat hamburger menu.
+
+* `Form`:
+Digunakan untuk membuat serta menyimpan data form.
+
+## Sebutkan jenis-jenis event yang ada pada Flutter (contoh: onPressed).
+
+Pada form, terdapat `onSaved` dan `onChanged`. Selain itu, terdapat `onPressed` dan `onTap` untuk
+gesture capture pada button dan navigator.
+
+## Jelaskan bagaimana cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
+
+class `Navigator` memiliki stack of routes yang dapat diatur melalui 2 cara: 
+declarative API `Navigator.pages`, dan imperative API `Navigator.push` dan `Navigator.pop`. 
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
+1. Drawer Menu
+
+Membuat drawer seperti pada Tutorial 7 PBP, mengganti routing menjadi `MyHomePage`, 
+`TambahBudgetPage`, dan `DataBudgetPage`.
+
+2. Halaman form
+
+Membuat form baru pada file `tambah_budget.dart`. Terdapat 3 input, yaitu judul dan nominal menggunakan
+`TextFormField`, dengan modifikasi pada nominal agar input hanya memperbolehkan karakter numerik.
+Input lain adalah tipe budget yang menggunakan `DropdownButtonFormField` dengan 2 pilihan yaitu
+pengeluaran dan pemasukan. Masing-masing input disimpan dalam variabel yang akan disave menggunakan
+`setState` oleh button ke dalam `lstBudgets` untuk dipass ke halaman data.
+
+`lstBudgets` akan berisi data budget dari form yang dibuat menjadi instance-instance `Budget` yang
+sudah dibuat classnya pada `budget.dart`.
+
+3. Halaman data
+
+Membuat halaman di file baru `data_budget.dart`. Untuk menampilkan data yang sudah dibuat di form,
+digunakan `ListView.builder` untuk merender semua elemen list menjadi widget. Setelah melakukan return
+menggunakan class `Card`, masing-masing elemen list tersebut akan ditampilkan pada card.
