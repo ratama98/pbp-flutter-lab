@@ -18,7 +18,7 @@ class TambahBudgetPage extends StatefulWidget {
 
 class _TambahBudgetPageState extends State<TambahBudgetPage> {
   final _formKey = GlobalKey<FormState>();
-  List<Budget> budgets = [];
+  List<Budget> lstBudgets = [];
   String judul = "";
   int nominal = 0;
   final List<String> listTipeBudget = ['Pengeluaran', 'Pemasukan'];
@@ -60,7 +60,7 @@ class _TambahBudgetPageState extends State<TambahBudgetPage> {
                 // Route menu ke halaman Data Budget
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => DataBudgetPage(budgets: budgets)),
+                  MaterialPageRoute(builder: (context) => DataBudgetPage(budgets: lstBudgets)),
                 );
               },
             ),
@@ -178,7 +178,7 @@ class _TambahBudgetPageState extends State<TambahBudgetPage> {
                   padding: const EdgeInsets.all(20),
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.blueGrey,
+                      backgroundColor: Colors.lightBlue,
                     ),
                     child: const Text(
                       "Simpan",
@@ -191,7 +191,7 @@ class _TambahBudgetPageState extends State<TambahBudgetPage> {
                         setState(() {
                           Budget newBudget =
                           Budget(judul, nominal, tipeBudget!);
-                          budgets.add(newBudget);
+                          lstBudgets.add(newBudget);
                         });
 
                         showDialog(

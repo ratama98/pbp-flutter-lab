@@ -2,6 +2,10 @@ import 'package:counter_7/main.dart';
 import 'package:counter_7/tambah_budget.dart';
 import 'package:flutter/material.dart';
 
+// Reference:
+// https://stackoverflow.com/questions/54977982/rangeerror-index-invalid-value-valid-value-range-is-empty-0
+// https://api.flutter.dev/flutter/material/Card-class.html
+
 class DataBudgetPage extends StatefulWidget {
   var budgets;
   DataBudgetPage({super.key, this.budgets});
@@ -63,16 +67,26 @@ class _DataBudgetPageState extends State<DataBudgetPage> {
                 child: Text("Belum ada data budget"),
               )
             else
-              ListView.builder(
-                itemBuilder: (context, i) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(widget.budgets[i].judul),
-                      subtitle: Text(widget.budgets[i].nominal),
-                      trailing: Text(widget.budgets[i].tipeBudget),
-                    ),
-                  );
-                },
+              Expanded (
+                  child: ListView.builder(
+                    itemCount: widget.budgets.length,
+                    itemBuilder: (context, i) {
+                      return Card(
+                        child: Column(
+                          children: <Widget>[
+                            ListTile(
+                              title: Text(widget.budgets[i].judul),
+                              subtitle: Text(widget.budgets[i].nominal.toString()),
+                            ),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[Text(widget.budgets[i].tipeBudget)]
+                            ),
+                          ]
+                        )
+                      );
+                    },
+                  )
               )
           ],
         ),
