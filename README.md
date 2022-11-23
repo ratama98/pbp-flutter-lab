@@ -124,3 +124,24 @@ sudah dibuat classnya pada `budget.dart`.
 Membuat halaman di file baru `data_budget.dart`. Untuk menampilkan data yang sudah dibuat di form,
 digunakan `ListView.builder` untuk merender semua elemen list menjadi widget. Setelah melakukan return
 menggunakan class `Card`, masing-masing elemen list tersebut akan ditampilkan pada card.
+
+# TUGAS 9
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+
+## Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+* `MaterialButton`:
+Menggunakan `onPressed`nya untuk tombol back setiap detail watchlist.
+
+* `FutureBuilder`:
+Berfungsi layaknya `async` pada javascript. Widget-widget akan diupdate berdasarkan `future`.
+
+* `ListTile`:
+Menyimpan `Text` serta memiliki `onTap` untuk mengarahkan ke detail watchlist.
+
+## Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+Flutter menggunakan `http` untuk mengirim HTTP Request (dalam tugas ini HTTP GET) ke server. Server akan mengembalikan response yang akan di-decode dan di-deserialize menggunakan `jsonDecode`, yang kemudian akan digunakan untuk membuat instance baru dari objek model yang sudah dibuat.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
