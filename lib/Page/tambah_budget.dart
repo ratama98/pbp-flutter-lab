@@ -1,6 +1,7 @@
 import 'package:counter_7/main.dart';
-import 'package:counter_7/data_budget.dart';
-import 'package:counter_7/budget.dart';
+import 'package:counter_7/Page/data_budget.dart';
+import 'package:counter_7/Model/budget.dart';
+import 'package:counter_7/Page/mywatchlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -29,7 +30,7 @@ class _TambahBudgetPageState extends State<TambahBudgetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tambah Budget'),
+        title: const Text('Tambah Budget'),
       ),
       drawer: Drawer(
         child: Column(
@@ -62,6 +63,16 @@ class _TambahBudgetPageState extends State<TambahBudgetPage> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => DataBudgetPage(budgets: lstBudgets)),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('MyWatchList'),
+              onTap: () {
+                // Route menu ke halaman mywatchlist
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyWatchListPage()),
                 );
               },
             ),
@@ -150,7 +161,7 @@ class _TambahBudgetPageState extends State<TambahBudgetPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 8),
                   child: DropdownButtonFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         hintText: "Pilih Jenis",
                         enabledBorder: InputBorder.none,
                         isDense: true
@@ -203,25 +214,23 @@ class _TambahBudgetPageState extends State<TambahBudgetPage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               elevation: 15,
-                              child: Container(
-                                child: ListView(
-                                  padding: const EdgeInsets.only(top: 20, bottom: 20),
-                                  shrinkWrap: true,
-                                  children: <Widget>[
-                                    Center(child: const Text('Informasi Data')),
-                                    SizedBox(height: 20),
-                                    // Munculkan informasi yang didapat dari form
-                                    Text('Judul: $judul'),
-                                    Text('Nominal: $nominal'),
-                                    Text('Jenis Budget: $tipeBudget'),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('Kembali'),
-                                    ),
-                                  ],
-                                ),
+                              child: ListView(
+                                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                                shrinkWrap: true,
+                                children: <Widget>[
+                                  const Center(child: Text('Informasi Data')),
+                                  const SizedBox(height: 20),
+                                  // Munculkan informasi yang didapat dari form
+                                  Text('Judul: $judul'),
+                                  Text('Nominal: $nominal'),
+                                  Text('Jenis Budget: $tipeBudget'),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('Kembali'),
+                                  ),
+                                ],
                               ),
                             );
                           },
